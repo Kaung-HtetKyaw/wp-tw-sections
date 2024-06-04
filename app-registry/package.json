@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "dev:www": "pnpm --filter=www dev",
+    "build:www": "pnpm --filter=www build",
     "dev:cli": "pnpm --filter=cli dev",
     "build:cli": "pnpm --filter=cli build",
     "build:registry": "pnpm --filter=www build:registry",

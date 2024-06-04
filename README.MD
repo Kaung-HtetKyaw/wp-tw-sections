@@ -113,3 +113,4 @@
 - [ ] Update the backend login url to be `letadminin`. Can use `WPS Hide Login`. 
 - [ ] Update the backend login logo to client logo. Use `resources/php/update-dashboard-logo.php` and change the `background-image`.
 - [ ] Configure SMTP to use client email with `WP Mail SMTP` # wp-tw-sections
+# wp-tw-sections

@@ -1,11 +1,11 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const registryEntrySchema = z.object({
   name: z.string(),
   namespace: z.string(),
   files: z.array(z.string()),
-  scripts: z.array(z.string()).optional().default([]),
-  css: z.array(z.string()).optional().default([]),
+  scripts: z.array(z.string()).default([]),
+  css: z.array(z.string()).default([]),
 });
 
 export const registrySchema = z.array(registryEntrySchema);

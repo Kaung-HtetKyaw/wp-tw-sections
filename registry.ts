@@ -1,4 +1,10 @@
-export const registry = [
+export const registry: {
+  namespace: string;
+  name: string;
+  scripts: string[];
+  files: string[];
+  css: string[];
+}[] = [
   {
     namespace: 'vo-custom-blocks/base',
     name: 'base',
@@ -11,5 +17,6 @@ export const registry = [
     name: 'wordpress-sidebar-block',
     files: ['wordpress-sidebar-block/wordpress-sidebar-block.php'],
     scripts: ['wordpress-sidebar-block.js'],
+    css: [],
   },
 ];

@@ -1,0 +1,17 @@
+{
+  "name": "wordpress-sidebar-block",
+  "namespace": "vo-custom-blocks/wordpress-sidebar-block",
+  "files": [
+    {
+      "name": "wordpress-sidebar-block.php",
+      "content": "<?php\n/**\n * Base Block template.\n *\n * @param array $block The block settings and attributes.\n */\n\n$text = !empty(get_field('text')) ? get_field('text') : 'Your text here...';\n\n?>\n\n<div class=\"bg-black text-white\">\n    <?php echo esc_html($text); ?>\n\n</div>"
+    }
+  ],
+  "scripts": [
+    {
+      "path": "wordpress-sidebar-block.js",
+      "content": "(function () {\n  document.addEventListener('DOMContentLoaded', () => {\n    console.log('Hello Test.js');\n  });\n})();\n"
+    }
+  ],
+  "css": []
+}

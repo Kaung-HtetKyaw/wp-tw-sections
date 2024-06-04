@@ -1,0 +1,49 @@
+@import "app.css";
+
+/* 
+    Editor styles for the Gutenberg editor
+*/ 
+
+.wp-block-post-title {
+    @apply font-bold container mx-auto px-4 text-4xl mb-8;
+}
+
+.editor-styles-wrapper ul {
+    padding-left: 30px;
+    list-style: disc;
+}
+
+.editor-styles-wrapper ol {
+    list-style-type: decimal;
+    padding-left: 30px;
+}
+
+.editor-styles-wrapper li {
+    margin-bottom: 10px;
+    display: list-item;
+    text-align: match-parent;
+    text-align: -webkit-match-parent;
+}
+
+.wp-block-post-content {
+    @apply container mx-auto px-4 text-lg;
+}
+
+.editor-styles-wrapper .wp-block-post-title {
+    max-width: 90%; 
+    padding: 0px;
+    padding-bottom: 20px;
+}
+
+.editor-styles-wrapper .wp-block-post-content {
+    max-width: 90%;
+    padding: 0px;
+}
+
+.editor-styles-wrapper .acf-input .acf-repeater.-table {
+    overflow: scroll;
+}
+
+.editor-styles-wrapper .acf-input .acf-repeater.-table table {
+    width: max-content;
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "base",
+    "namespace": "vo-custom-blocks/base",
+    "files": [
+      "base/base.php"
+    ],
+    "scripts": [
+      "base.js"
+    ],
+    "css": [
+      "base.css"
+    ]
+  },
+  {
+    "name": "wordpress-sidebar-block",
+    "namespace": "vo-custom-blocks/wordpress-sidebar-block",
+    "files": [
+      "wordpress-sidebar-block/wordpress-sidebar-block.php"
+    ],
+    "scripts": [
+      "wordpress-sidebar-block.js"
+    ],
+    "css": []
+  }
+]

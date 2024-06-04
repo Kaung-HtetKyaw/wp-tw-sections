@@ -1,0 +1,42 @@
+{
+  "name": "base",
+  "namespace": "vo-custom-blocks/base",
+  "files": [
+    {
+      "name": "base.php",
+      "content": "<?php\n/**\n * Base Block template.\n *\n * @param array $block The block settings and attributes.\n */\n\n$text = !empty(get_field('text')) ? get_field('text') : 'Your text here...';\n\n?>\n\n<div class=\"bg-black text-white\">\n    <?php echo esc_html($text); ?>\n\n</div>\n\n<?php include_once dirname(__FILE__) . \"/test.php\" ?>"
+    },
+    {
+      "name": "test.php",
+      "content": "Hello World"
+    }
+  ],
+  "scripts": [
+    {
+      "path": "base.js",
+      "content": "import './utils/test';\nimport { SOME_TEST_CONSTANT } from './utils/constants';\n\n(function () {\n  document.addEventListener('DOMContentLoaded', () => {\n    console.log('Base Block Script Registered');\n    console.log(SOME_TEST_CONSTANT);\n  });\n});\n"
+    },
+    {
+      "path": "utils/test.js",
+      "content": "import { SOME_TEST_CONSTANT } from './constants';\nimport './hello';\n\n(function () {\n  document.addEventListener('DOMContentLoaded', () => {\n    console.log('Hello Test.js');\n    console.log(SOME_TEST_CONSTANT);\n  });\n})();\n"
+    },
+    {
+      "path": "utils/constants.js",
+      "content": "import '../directives/header';\n\nexport const SOME_TEST_CONSTANT = 'HELLO';\n"
+    },
+    {
+      "path": "directives/header.js",
+      "content": "// Insert x-header to the header to get the height of the header in Alpine store and set it as a CSS variable\n\ndocument.addEventListener('alpine:init', () => {\n  Alpine.store('header', {\n    height: 0,\n    isScrollDown: false,\n    setScrollDown(scrollDown) {\n      this.isScrollDown = scrollDown;\n    },\n    setHeight(height) {\n      this.height = height;\n    },\n  })\n\n  Alpine.directive('header', (el) => {\n    const header = el;\n\n    const observer = new ResizeObserver((entries) => {\n        // Handle resize event\n        const entry = entries[0];\n        let height = entry.contentRect.height;\n    \n        document.documentElement.style.setProperty(\n          \"--header-height\",\n          `${height}px`\n        );\n\n        Alpine.store('header').setHeight(height);\n    }); \n    \n    observer.observe(header); \n\n    let prevScroll = window.scrollY;\n    window.addEventListener('scroll', () => {\n        let currentScroll = window.scrollY;\n        console.log(currentScroll, prevScroll);\n        if (prevScroll > currentScroll) {\n          Alpine.store('header').setScrollDown(false);\n        } else {\n          Alpine.store('header').setScrollDown(true);\n        }\n        prevScroll = currentScroll <= 0 ? 0 : currentScroll;\n    })\n  })\n});\n"
+    },
+    {
+      "path": "utils/hello.js",
+      "content": "import { SOME_TEST_CONSTANT } from './constants';\n\n(function () {\n  document.addEventListener('DOMContentLoaded', () => {\n    console.log('Hello Test.js');\n    console.log(SOME_TEST_CONSTANT);\n  });\n})();\n"
+    }
+  ],
+  "css": [
+    {
+      "path": "base.css",
+      "content": ".test {\n  @apply m-[100px];\n}\n"
+    }
+  ]
+}

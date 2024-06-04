@@ -1,0 +1,27 @@
+/* Configure website containers here */
+
+:root {
+  --container: 1760px;
+  --container-md: 1560px;
+  --container-sm: 1360px;
+  --container-md-px: 5.68%;
+  --container-sm-px: 10.46%;
+}
+
+.container {
+  max-width: 1760px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+@media screen(sm) {
+  .container-md {
+    padding: 0 var(--container-md-px);
+  }
+}
+
+@media screen(sm) {
+  .container-sm {
+    padding: 0 var(--container-sm-px);
+  }
+}

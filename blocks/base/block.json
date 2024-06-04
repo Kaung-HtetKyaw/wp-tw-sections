@@ -1,0 +1,20 @@
+{
+  "name": "vo-custom-blocks/base",
+  "title": "Base",
+  "description": "A custom base block - example",
+  "category": "vo-custom-blocks",
+  "icon": "block-default",
+  "keywords": [
+    "base"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "base.php"
+  },
+  "supports": {
+    "anchor": true
+  },
+  "scripts": [
+    "base.js"
+  ]
+}

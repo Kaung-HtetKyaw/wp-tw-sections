@@ -1,19 +1,14 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import fetch from 'node-fetch';
-import {
-  registryIndexSchema,
-  registryItemWithContentSchema,
-  registryWithContentSchema,
-} from './schema';
+import { registryIndexSchema, registryWithContentSchema } from './schema';
 import { z } from 'zod';
 
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined;
-
-const baseUrl =
-  process.env.COMPONENTS_REGISTRY_URL ?? 'https://blocks.vo-wptw.com';
+console.log(process.env.COMPONENTS_REGISTRY_URL);
+const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? 'http://localhost:3000';
 
 export async function getRegistryIndex() {
   try {
@@ -50,6 +45,7 @@ export async function fetchTree(tree: z.infer<typeof registryIndexSchema>) {
 
     return registryWithContentSchema.parse(result);
   } catch (error) {
+    console.error(error);
     throw new Error(`Failed to fetch tree from registry.`);
   }
 }

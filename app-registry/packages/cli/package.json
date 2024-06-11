@@ -1,14 +1,15 @@
 {
-  "name": "cli",
-  "private": true,
+  "name": "@frontend-team/vo-wp-tw-cli",
   "version": "0.0.0",
   "type": "module",
   "exports": "./dist/index.js",
-  "bin": "./dist/index.js",
+  "bin": {
+    "vo-wp-tw-sections": "dist/index.js"
+  },
   "scripts": {
     "dev": "tsup --watch",
-    "start:dev": "pnpm build && cross-env COMPONENTS_REGISTRY_URL=http://localhost:3000 node dist/index.js",
-    "build": "tsup",
+    "start:dev": "NODE_ENV=development tsup && cross-env COMPONENTS_REGISTRY_URL=http://localhost:3000 node dist/index.js ",
+    "build": "NODE_ENV=production tsup",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -44,5 +45,8 @@
     "tsup": "^6.6.3",
     "type-fest": "^3.8.0",
     "typescript": "^4.9.3"
+  },
+  "publishConfig": {
+    "@frontend-team:registry": "https://gitlab.visibleone.io/api/v4/projects/279/packages/npm/"
   }
 }

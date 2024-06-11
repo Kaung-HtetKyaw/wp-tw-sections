@@ -11,7 +11,7 @@ export const registryItemSchema = z.object({
 export const registryItemWithContentSchema = registryItemSchema.extend({
   files: z.array(
     z.object({
-      name: z.string(),
+      path: z.string(),
       content: z.string(),
     })
   ),

@@ -16,7 +16,7 @@ import {
   registryItemWithContentSchema,
 } from '../utils/registry/schema';
 import { defaultTargetDirPaths } from '../utils/registry/config';
-import { JS_PATH, ROOT_PATH } from '../utils/paths';
+import { getTargetDirPaths, JS_PATH, ROOT_PATH } from '../utils/paths';
 import { handleError } from '../utils/handle-error';
 
 const addOptionsSchema = z.object({
@@ -135,11 +135,14 @@ export const addBlocksAndDepedencies = async ({
   for (const item of payload) {
     spinner.text = `Installing ${item.name}...`;
 
-    const targetDirPaths = {
-      path: options.path ?? path.join(cwd, defaultTargetDirPaths.path),
-      script: options.script ?? path.join(cwd, defaultTargetDirPaths.script),
-      css: options.css ?? path.join(cwd, defaultTargetDirPaths.css),
-    };
+    const targetDirPaths = getTargetDirPaths({
+      overridePaths: {
+        path: options.path,
+        script: options.script,
+        css: options.css,
+      },
+      cwd,
+    });
 
     if (!targetDirPaths.path || !targetDirPaths.script || !targetDirPaths.css) {
       logger.warn('Cannot find paths for blocks or script or css');
@@ -154,7 +157,7 @@ export const addBlocksAndDepedencies = async ({
     }
 
     const existingBlocks = item.files.filter((file) =>
-      existsSync(path.resolve(targetDirPaths.path, item.name, file.name))
+      existsSync(path.resolve(targetDirPaths.path, item.name, file.path))
     );
 
     if (existingBlocks.length && !options.overwrite) {
@@ -183,7 +186,7 @@ export const addBlocksAndDepedencies = async ({
     }
 
     for (const file of item.files) {
-      let filePath = path.resolve(targetDirPaths.path, item.name, file.name);
+      let filePath = path.resolve(targetDirPaths.path, item.name, file.path);
 
       await fs.writeFile(filePath, file.content);
     }

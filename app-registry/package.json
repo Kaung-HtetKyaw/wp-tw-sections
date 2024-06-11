@@ -1,5 +1,5 @@
 {
-  "name": "wp-tw-app",
+  "name": "vo-wp-tw-registry",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,10 +11,10 @@
   "scripts": {
     "dev:www": "pnpm --filter=www dev",
     "build:www": "pnpm --filter=www build",
-    "dev:cli": "pnpm --filter=cli dev",
-    "build:cli": "pnpm --filter=cli build",
+    "dev:cli": "pnpm --filter=@frontend-team/vo-wp-tw-cli dev",
+    "build:cli": "pnpm --filter=@frontend-team/vo-wp-tw-cli build",
     "build:registry": "pnpm --filter=www build:registry",
-    "start:dev:cli": "pnpm --filter=cli start:dev"
+    "start:dev:cli": "pnpm --filter=@frontend-team/vo-wp-tw-cli start:dev"
   },
   "keywords": [],
   "author": "",

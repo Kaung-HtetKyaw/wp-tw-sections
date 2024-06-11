@@ -3,11 +3,11 @@
   "namespace": "vo-custom-blocks/base",
   "files": [
     {
-      "name": "base.php",
+      "path": "base.php",
       "content": "<?php\n/**\n * Base Block template.\n *\n * @param array $block The block settings and attributes.\n */\n\n$text = !empty(get_field('text')) ? get_field('text') : 'Your text here...';\n\n?>\n\n<div class=\"bg-black text-white\">\n    <?php echo esc_html($text); ?>\n\n</div>\n\n<?php include_once dirname(__FILE__) . \"/test.php\" ?>"
     },
     {
-      "name": "test.php",
+      "path": "test.php",
       "content": "Hello World"
     }
   ],
